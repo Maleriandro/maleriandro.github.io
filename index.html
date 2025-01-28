@@ -304,8 +304,12 @@
                     const projectCard = document.createElement('div');
                     projectCard.className = 'project-card';
 
-                    const imageHTML = imageUrl
+                    let imageHTML = imageUrl
                         ? `<img src="${imageUrl}" class="project-image" alt="${project.name}" onerror="this.onerror=null;this.remove()" preview">`:"";
+
+                    if (project.homepage && imageUrl) {
+                        imageHTML = '<a href="' + project.homepage + '" target="_blank">' + imageHTML + '</a>';
+                    }
 
                     const languagesHTML = languages.length > 0
                         ? `<div class="languages-list">
